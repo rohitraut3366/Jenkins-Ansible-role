@@ -1,0 +1,15 @@
+---
+# vars file for RedHat
+java: "java-devel"
+jenkins: "jenkins"
+
+fpackage:
+    rpm:
+       name: "Jenkins"
+       url: "https://pkg.jenkins.io/redhat-stable/jenkins.repo" 
+       description: "jenkins package repository"
+    key: "https://pkg.jenkins.io/redhat-stable/jenkins.io.key"
+
+fsoftware:
+    java: "{{ java }}"
+    jenkins: "{{ jenkins }}"

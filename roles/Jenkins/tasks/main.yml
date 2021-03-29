@@ -1,0 +1,11 @@
+---
+# tasks file for Jenkins
+
+- name: "{{ ansible_facts['os_family'] }}"
+  include_vars: "{{ ansible_facts['os_family']  }}.yml"
+
+- name: "Install Jenkins in {{ ansible_facts['os_family'] }}"
+  include_tasks: "{{ ansible_facts['os_family'] }}.yml"
+
+- name: "Starting Jenkins Service"
+  include_tasks: "StartService.yml"

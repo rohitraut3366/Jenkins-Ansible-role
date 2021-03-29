@@ -1,0 +1,18 @@
+---
+# tasks file for Fedora
+- name: Add rpm key
+  rpm_key:
+      state: present
+      key: "{{ fpackage.key }}"
+ 
+- name: Configure yum repository
+  yum_repository:
+      file: "jenkins"
+      baseurl: "{{ fpackage.repo.url }}"
+      description: "{{ fpackage.repo.description }}"
+      gpgkey: "{{ fpackage.key }}"
+
+- name: Install Java and Jenkins
+  package:
+      name: "{{ item.value }}"
+  loop: "{{ loopup('dict', fsoftware }}"

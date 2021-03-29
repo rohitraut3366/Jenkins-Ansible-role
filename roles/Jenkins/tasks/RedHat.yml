@@ -1,0 +1,20 @@
+---
+# tasks file for OS-family RedHat
+
+- name: Add jenkin package  gpgkey
+  rpm_key:
+      key: "{{ rpackage.key }}"
+      state: present
+
+- name: jenkins package repository
+  yum_repository:
+      file: "jenkins"
+      name: "{{ rpackage.rpm.name }}"
+      baseurl: "{{ rpackage.rpm.url }}"
+      gpgkey: "{{ rpackage.key }}"
+      description: "{{ rpackage.rpm.description }}"
+
+- name: "Install Java and Jenkins"
+  package:
+      name: "{{ item.value }}"
+  loop: "{{ lookup('dict', rsoftware) }}"

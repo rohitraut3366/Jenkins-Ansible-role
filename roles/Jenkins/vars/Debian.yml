@@ -1,0 +1,14 @@
+---
+# vars file for Debian
+java: "openjdk-8-jdk"
+jenkins: "jenkins"
+
+dpackage:
+   repo:
+      name: "jenkins"
+      url: "deb https://pkg.jenkins.io/debian-stable binary/"
+   key: "https://pkg.jenkins.io/debian-stable/jenkins.io.key"
+
+dsoftware:
+   java: "{{ java }}"
+   jenkins: "{{ jenkins }}"

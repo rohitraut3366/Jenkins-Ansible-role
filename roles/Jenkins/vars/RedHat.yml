@@ -1,0 +1,15 @@
+---
+# vars file for RedHat
+java: "java-1.8.0-openjdk"
+jenkins: "jenkins"
+
+rpackage:
+    rpm:
+       name: "Jenkins"
+       url: "http://pkg.jenkins.io/redhat"
+       description: "Jenkin package repository"
+    key: "https://pkg.jenkins.io/redhat-stable/jenkins.io.key"
+
+rsoftware:
+    java: "{{ java }}"
+    jenkins: "{{ jenkins }}"

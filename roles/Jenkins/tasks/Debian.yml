@@ -1,0 +1,18 @@
+---
+# tasks file for Debian
+- name: Add Jenkins package gpgkey
+  apt_key:
+       url: "{{ dpackage.key }}"
+       state: present
+
+- name: Add apt repository
+  apt_repository:
+        filename: "jenkins"
+        state: present
+        repo: "{{ dpackage.repo.url }}"
+
+- name: Install Java and Jenkins
+  package:
+        name: "{{ item.value }}"
+        state: present
+  loop: "{{ lookup('dict', dsoftware) }}"
